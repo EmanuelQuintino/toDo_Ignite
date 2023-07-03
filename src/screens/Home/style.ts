@@ -7,12 +7,16 @@ export const styles = StyleSheet.create({
     width: "100%",
   },
 
+  main: {
+    padding: 24,
+    marginTop: -52,
+  },
+
   box: {
+    marginTop: 36,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 56,
-    padding: 24,
   },
 
   boxTotalToDos: {
