@@ -2,6 +2,7 @@ import { Text, View } from 'react-native';
 import { LogoHome } from "../../components/LogoHome";
 import { styles } from './style';
 import { InputToDo } from '../../components/InputToDo';
+import { TaskToDo } from '../../components/TaskToDo';
 
 export function Home() {
   return (
@@ -23,6 +24,8 @@ export function Home() {
           </View>
         </View>
       </View>
+
+      <TaskToDo/>
     </View>
   );
 };
