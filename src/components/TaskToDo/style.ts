@@ -4,20 +4,23 @@ export const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 12,
+    justifyContent: "space-between",
+    width: "100%",
+    backgroundColor: "#262626",
+    borderRadius: 8,
+    height: 64,
+    paddingHorizontal: 18,
+    marginBottom: 8,
+  },
+
+  text: {
+    color: "#f2f2f2",
+    fontSize: 14,
   },
 
   button: {
-    width: 56,
-    height: 56,
     borderRadius: 8,
-    backgroundColor: "#1E6F9F",
     alignItems: "center",
     justifyContent: "center",
-  },
-
-  buttonText: {
-    color: "#f2f2f2",
-    fontSize: 24,
   },
 });

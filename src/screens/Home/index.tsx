@@ -23,9 +23,11 @@ export function Home() {
             <Text style={styles.total}>3</Text>
           </View>
         </View>
-      </View>
 
-      <TaskToDo/>
+        <TaskToDo />
+        <TaskToDo />
+        <TaskToDo />
+      </View>
     </View>
   );
 };

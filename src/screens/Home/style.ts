@@ -8,15 +8,16 @@ export const styles = StyleSheet.create({
   },
 
   main: {
-    padding: 24,
-    marginTop: -52,
+    padding: 18,
+    marginTop: -46,
   },
 
   box: {
-    marginTop: 36,
+    marginTop: 32,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    marginBottom: 20,
   },
 
   boxTotalToDos: {
@@ -29,19 +30,19 @@ export const styles = StyleSheet.create({
   created: {
     color: "#4ea8de",
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 16,
   },
 
   completed: {
     color: "#8284fa",
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 16,
   },
 
   total: {
     color: "#d9d9d9",
     fontWeight: "bold",
-    fontSize: 16,
+    fontSize: 14,
     borderRadius: 100,
     paddingHorizontal: 12,
     backgroundColor: "#333333",
