@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    gap: 8,
     width: "100%",
     backgroundColor: "#262626",
     borderRadius: 8,
@@ -16,6 +17,7 @@ export const styles = StyleSheet.create({
   text: {
     color: "#f2f2f2",
     fontSize: 14,
+    flexWrap: "wrap",
   },
 
   button: {

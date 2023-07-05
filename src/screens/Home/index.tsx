@@ -1,12 +1,18 @@
-import { Text, View } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import { LogoHome } from "../../components/LogoHome";
 import { styles } from './style';
 import { InputToDo } from '../../components/InputToDo';
 import { TaskToDo } from '../../components/TaskToDo';
+import { useState } from 'react';
 
 export function Home() {
-  const handleAddToDo = () => console.log("ToDo");
-  const handleRemoveToDo = (task: string) => console.log(`removeToDo ${task}`);
+  const [tasks, setTasks] = useState([]);
+
+  const handleAddToDo = () => {
+    setTasks(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]);
+  };
+  const handleRemoveToDo = (task: string) => setTasks([]);
+
   const handleCompleteToDo = (complete: boolean) => {
     console.log("completeToDo", complete)
   };
@@ -30,22 +36,27 @@ export function Home() {
           </View>
         </View>
 
-        <TaskToDo
-          task={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}
-          onComplete={() => handleCompleteToDo(true)}
-          onDelete={() => handleRemoveToDo("Remove")}
-        />
-
-        <TaskToDo
-          task={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}
-          onComplete={handleCompleteToDo}
-          onDelete={handleRemoveToDo}
-        />
-
-        <TaskToDo
-          task={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}
-          onComplete={handleCompleteToDo}
-          onDelete={handleRemoveToDo}
+        <FlatList
+          data={tasks}
+          keyExtractor={item => item}
+          renderItem={({ item }) => (
+            <TaskToDo
+              task={`${item} Lorem ipsum dolor sit amet consectetur adipisicing.`}
+              onComplete={() => handleCompleteToDo(true)}
+              onDelete={() => handleRemoveToDo("Remove")}
+            />
+          )}
+          showsVerticalScrollIndicator={false}
+          ListEmptyComponent={() => (
+            <View style={styles.emptyList}>
+              <Text style={styles.emptyListText1}>
+                Você ainda não tem tarefas cadastradas
+              </Text>
+              <Text style={styles.emptyListText2}>
+                Crie tarefas e organize seus itens a fazer
+              </Text>
+            </View>
+          )}
         />
       </View>
     </View>

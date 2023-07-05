@@ -47,4 +47,21 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 12,
     backgroundColor: "#333333",
   },
+
+  emptyList: {
+    color: "#333333",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  emptyListText1: {
+    color: "#808080",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+
+  emptyListText2: {
+    color: "#808080cc",
+    fontSize: 16,
+  },
 });
