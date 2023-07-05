@@ -1,8 +1,11 @@
 import { TextInput, View, TouchableOpacity, Text } from 'react-native';
 import { styles } from "./style";
 
-export function InputToDo() {
-  const handleAddToDo = () => console.log("ToDo");
+type Props = {
+  onAdd: () => void;
+};
+
+export function InputToDo({ onAdd }: Props) {
   return (
     <View style={styles.container}>
       <TextInput
@@ -11,7 +14,7 @@ export function InputToDo() {
         placeholderTextColor={"#808080"}
       />
 
-      <TouchableOpacity style={styles.button} onPress={handleAddToDo}>
+      <TouchableOpacity style={styles.button} onPress={onAdd}>
         <Text style={styles.buttonText}>+</Text>
       </TouchableOpacity>
     </View>

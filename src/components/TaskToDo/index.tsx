@@ -3,20 +3,22 @@ import trashIcon from "../../../assets/trashIcon.png";
 import circleIcon from "../../../assets/circleIcon.png";
 import { styles } from "./style";
 
-export function TaskToDo() {
-  const handleRemoveToDo = () => console.log("removeToDo");
-  const handleCompleteToDo = () => console.log("completeToDo");
+type Props = {
+  task: string;
+  onComplete: () => void;
+  onDelete: () => void;
+};
+
+export function TaskToDo({ task, onComplete, onDelete }: Props) {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={handleCompleteToDo}>
+      <TouchableOpacity style={styles.button} onPress={onComplete}>
         <Image source={circleIcon} />
       </TouchableOpacity>
 
-      <Text style={styles.text}>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-      </Text>
+      <Text style={styles.text}>{task}</Text>
 
-      <TouchableOpacity style={styles.button} onPress={handleRemoveToDo}>
+      <TouchableOpacity style={styles.button} onPress={onDelete}>
         <Image source={trashIcon} />
       </TouchableOpacity>
     </View>

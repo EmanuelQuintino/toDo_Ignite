@@ -5,12 +5,18 @@ import { InputToDo } from '../../components/InputToDo';
 import { TaskToDo } from '../../components/TaskToDo';
 
 export function Home() {
+  const handleAddToDo = () => console.log("ToDo");
+  const handleRemoveToDo = (task: string) => console.log(`removeToDo ${task}`);
+  const handleCompleteToDo = (complete: boolean) => {
+    console.log("completeToDo", complete)
+  };
+
   return (
     <View style={styles.container}>
       <LogoHome />
 
       <View style={styles.main}>
-        <InputToDo />
+        <InputToDo onAdd={handleAddToDo} />
 
         <View style={styles.box}>
           <View style={styles.boxTotalToDos}>
@@ -24,9 +30,23 @@ export function Home() {
           </View>
         </View>
 
-        <TaskToDo />
-        <TaskToDo />
-        <TaskToDo />
+        <TaskToDo
+          task={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}
+          onComplete={() => handleCompleteToDo(true)}
+          onDelete={() => handleRemoveToDo("Remove")}
+        />
+
+        <TaskToDo
+          task={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}
+          onComplete={handleCompleteToDo}
+          onDelete={handleRemoveToDo}
+        />
+
+        <TaskToDo
+          task={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}
+          onComplete={handleCompleteToDo}
+          onDelete={handleRemoveToDo}
+        />
       </View>
     </View>
   );
