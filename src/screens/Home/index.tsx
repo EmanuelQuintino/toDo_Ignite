@@ -1,4 +1,4 @@
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, Text, View, Alert } from 'react-native';
 import { LogoHome } from "../../components/LogoHome";
 import { styles } from './style';
 import { InputToDo } from '../../components/InputToDo';
@@ -6,12 +6,25 @@ import { TaskToDo } from '../../components/TaskToDo';
 import { useState } from 'react';
 
 export function Home() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<string[]>([]);
+  const [task, setTask] = useState("");
 
   const handleAddToDo = () => {
-    setTasks(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]);
+    setTasks([...tasks, task]);
+    setTask("");
   };
-  const handleRemoveToDo = (task: string) => setTasks([]);
+
+  const handleRemoveToDo = (task: string) => {
+    const removeTask = () => {
+      const newArrayTasks = tasks.filter(taskInArray => taskInArray !== task);
+      setTasks(newArrayTasks);
+    };
+
+    Alert.alert("Remover Tarefa", "Deseja remover tarefa da lista de To Do?", [
+      { text: "Sim", onPress: removeTask },
+      { text: "Não", style: "cancel" },
+    ]);
+  };
 
   const handleCompleteToDo = (complete: boolean) => {
     console.log("completeToDo", complete)
@@ -22,7 +35,11 @@ export function Home() {
       <LogoHome />
 
       <View style={styles.main}>
-        <InputToDo onAdd={handleAddToDo} />
+        <InputToDo
+          onAdd={handleAddToDo}
+          task={task}
+          setTask={setTask}
+        />
 
         <View style={styles.box}>
           <View style={styles.boxTotalToDos}>
@@ -41,9 +58,9 @@ export function Home() {
           keyExtractor={item => item}
           renderItem={({ item }) => (
             <TaskToDo
-              task={`${item} Lorem ipsum dolor sit amet consectetur adipisicing.`}
+              task={item}
               onComplete={() => handleCompleteToDo(true)}
-              onDelete={() => handleRemoveToDo("Remove")}
+              onDelete={() => handleRemoveToDo(item)}
             />
           )}
           showsVerticalScrollIndicator={false}
