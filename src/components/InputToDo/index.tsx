@@ -3,7 +3,7 @@ import { styles } from "./style";
 
 type Task = {
   content: string;
-  isChecked: boolean;
+  isCompleted: boolean;
 };
 
 type Props = {

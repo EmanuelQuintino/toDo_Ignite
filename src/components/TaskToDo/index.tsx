@@ -1,25 +1,30 @@
 import { View, TouchableOpacity, Text, Image } from 'react-native';
-import { useState } from "react";
 import { styles } from "./style";
 
-type Props = {
-  task: string;
-  onDelete: () => void;
+type Task = {
+  content: string;
+  isCompleted: boolean;
 };
 
-export function TaskToDo({ task, onDelete }: Props) {
-  const [onComplete, setOnComplete] = useState(false);
-  const handleOnComplete = () => setOnComplete(onComplete ? false : true);
+type Props = {
+  task: Task;
+  onDelete: () => void;
+  onComplete: () => void;
+};
+
+export function TaskToDo({ task, onDelete, onComplete }: Props) {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={handleOnComplete}>
-        {onComplete
+      <TouchableOpacity style={styles.button} onPress={onComplete}>
+        {task.isCompleted
           ? <Image source={require("../../../assets/checked.png")} />
           : <Image source={require("../../../assets/circleIcon.png")} />
         }
       </TouchableOpacity>
 
-      <Text style={onComplete ? styles.textChecked : styles.text}>{task}</Text>
+      <Text style={task.isCompleted ? styles.textChecked : styles.text}>
+        {task.content}
+      </Text>
 
       <TouchableOpacity style={styles.button} onPress={onDelete}>
         <Image source={require("../../../assets/trashIcon.png")} />

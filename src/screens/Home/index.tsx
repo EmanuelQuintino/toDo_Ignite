@@ -7,21 +7,21 @@ import { useState, useEffect } from 'react';
 
 type Task = {
   content: string;
-  isChecked: boolean;
+  isCompleted: boolean;
 };
 
 export function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [task, setTask] = useState<Task>({ content: "", isChecked: false });
+  const [task, setTask] = useState<Task>({ content: "", isCompleted: false });
   const [totalCreatedToDos, setTotalCreatedToDos] = useState(0);
   const [totalComplatedToDos, setTotalComplatedToDos] = useState(0);
 
   const handleAddToDo = () => {
     setTasks([...tasks, {
       content: task.content,
-      isChecked: false
+      isCompleted: false
     }]);
-    setTask({ content: "", isChecked: false });
+    setTask({ content: "", isCompleted: false });
   };
 
   const handleRemoveToDo = (task: Task) => {
@@ -34,6 +34,20 @@ export function Home() {
       { text: "Sim", onPress: removeTask },
       { text: "Não", style: "cancel" },
     ]);
+  };
+
+  const handleCompleteTask = (task: Task) => {
+    const newArrayCompleteTask = tasks.map(taskInArray => {
+      if (taskInArray === task) {
+        return {
+          ...taskInArray,
+          isCompleted: taskInArray.isCompleted ? false : true
+        };
+      } else {
+        return taskInArray;
+      };
+    });
+    setTasks(newArrayCompleteTask);
   };
 
   useEffect(() => {
@@ -68,8 +82,9 @@ export function Home() {
           keyExtractor={item => item.content}
           renderItem={({ item }) => (
             <TaskToDo
-              task={item.content}
+              task={item}
               onDelete={() => handleRemoveToDo(item)}
+              onComplete={() => handleCompleteTask(item)}
             />
           )}
           showsVerticalScrollIndicator={false}
