@@ -5,18 +5,26 @@ import { InputToDo } from '../../components/InputToDo';
 import { TaskToDo } from '../../components/TaskToDo';
 import { useState, useEffect } from 'react';
 
+type Task = {
+  content: string;
+  isChecked: boolean;
+};
+
 export function Home() {
-  const [tasks, setTasks] = useState<string[]>([]);
-  const [task, setTask] = useState("");
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [task, setTask] = useState<Task>({ content: "", isChecked: false });
   const [totalCreatedToDos, setTotalCreatedToDos] = useState(0);
   const [totalComplatedToDos, setTotalComplatedToDos] = useState(0);
 
   const handleAddToDo = () => {
-    setTasks([...tasks, task]);
-    setTask("");
+    setTasks([...tasks, {
+      content: task.content,
+      isChecked: false
+    }]);
+    setTask({ content: "", isChecked: false });
   };
 
-  const handleRemoveToDo = (task: string) => {
+  const handleRemoveToDo = (task: Task) => {
     const removeTask = () => {
       const newArrayTasks = tasks.filter(taskInArray => taskInArray !== task);
       setTasks(newArrayTasks);
@@ -57,10 +65,10 @@ export function Home() {
 
         <FlatList
           data={tasks}
-          keyExtractor={item => item}
+          keyExtractor={item => item.content}
           renderItem={({ item }) => (
             <TaskToDo
-              task={item}
+              task={item.content}
               onDelete={() => handleRemoveToDo(item)}
             />
           )}
