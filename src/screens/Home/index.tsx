@@ -86,14 +86,15 @@ export function Home() {
         <FlatList
           data={tasks}
           keyExtractor={item => item.content}
+          showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
             <TaskToDo
+              key={item.content}
               task={item}
               onDelete={() => handleRemoveToDo(item)}
               onComplete={() => handleCompleteTask(item)}
             />
           )}
-          showsVerticalScrollIndicator={false}
           ListEmptyComponent={() => (
             <View style={styles.emptyList}>
               <Image

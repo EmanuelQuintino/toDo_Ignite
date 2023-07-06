@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
   main: {
     padding: 18,
     marginTop: -46,
+    flex: 1,
   },
 
   box: {
