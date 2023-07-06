@@ -30,7 +30,7 @@ export function Home() {
       setTasks(newArrayTasks);
     };
 
-    Alert.alert("Remover Tarefa", "Deseja remover tarefa da lista de To Do?", [
+    Alert.alert("Remover Tarefa", "Deseja remover tarefa da lista de ToDo?", [
       { text: "Sim", onPress: removeTask },
       { text: "Não", style: "cancel" },
     ]);
