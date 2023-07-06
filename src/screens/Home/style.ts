@@ -54,6 +54,11 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
+  imageClipBoard: {
+    marginTop: 64,
+    marginBottom: 16,
+  },
+
   emptyListText1: {
     color: "#808080",
     fontWeight: "bold",

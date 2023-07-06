@@ -1,4 +1,4 @@
-import { FlatList, Text, View, Alert } from 'react-native';
+import { FlatList, Text, View, Alert, Image } from 'react-native';
 import { LogoHome } from "../../components/LogoHome";
 import { styles } from './style';
 import { InputToDo } from '../../components/InputToDo';
@@ -66,9 +66,15 @@ export function Home() {
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={() => (
             <View style={styles.emptyList}>
+              <Image
+                style={styles.imageClipBoard}
+                source={require("../../../assets/Clipboard.png")}
+              />
+
               <Text style={styles.emptyListText1}>
                 Você ainda não tem tarefas cadastradas
               </Text>
+
               <Text style={styles.emptyListText2}>
                 Crie tarefas e organize seus itens a fazer
               </Text>
