@@ -3,11 +3,13 @@ import { LogoHome } from "../../components/LogoHome";
 import { styles } from './style';
 import { InputToDo } from '../../components/InputToDo';
 import { TaskToDo } from '../../components/TaskToDo';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export function Home() {
   const [tasks, setTasks] = useState<string[]>([]);
   const [task, setTask] = useState("");
+  const [totalCreatedToDos, setTotalCreatedToDos] = useState(0);
+  const [totalComplatedToDos, setTotalComplatedToDos] = useState(0);
 
   const handleAddToDo = () => {
     setTasks([...tasks, task]);
@@ -26,6 +28,10 @@ export function Home() {
     ]);
   };
 
+  useEffect(() => {
+    setTotalCreatedToDos(tasks.length);
+  }, [tasks]);
+
   return (
     <View style={styles.container}>
       <LogoHome />
@@ -40,12 +46,12 @@ export function Home() {
         <View style={styles.box}>
           <View style={styles.boxTotalToDos}>
             <Text style={styles.created}>Criadas</Text>
-            <Text style={styles.total}>2</Text>
+            <Text style={styles.total}>{totalCreatedToDos}</Text>
           </View>
 
           <View style={styles.boxTotalToDos}>
             <Text style={styles.completed}>Concluídas</Text>
-            <Text style={styles.total}>3</Text>
+            <Text style={styles.total}>{totalComplatedToDos}</Text>
           </View>
         </View>
 
