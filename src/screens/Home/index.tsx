@@ -26,10 +26,6 @@ export function Home() {
     ]);
   };
 
-  const handleCompleteToDo = (complete: boolean) => {
-    console.log("completeToDo", complete)
-  };
-
   return (
     <View style={styles.container}>
       <LogoHome />
@@ -59,7 +55,6 @@ export function Home() {
           renderItem={({ item }) => (
             <TaskToDo
               task={item}
-              onComplete={() => handleCompleteToDo(true)}
               onDelete={() => handleRemoveToDo(item)}
             />
           )}

@@ -20,6 +20,13 @@ export const styles = StyleSheet.create({
     flexWrap: "wrap",
   },
 
+  textChecked: {
+    color: "#808080",
+    fontSize: 14,
+    flexWrap: "wrap",
+    textDecorationLine: "line-through"
+  },
+
   button: {
     borderRadius: 8,
     alignItems: "center",
