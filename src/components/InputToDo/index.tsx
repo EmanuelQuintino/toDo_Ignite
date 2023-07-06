@@ -1,4 +1,4 @@
-import { TextInput, View, TouchableOpacity, Text } from 'react-native';
+import { TextInput, View, TouchableOpacity, Text, Image } from 'react-native';
 import { styles } from "./style";
 
 type Props = {
@@ -19,7 +19,7 @@ export function InputToDo({ onAdd, task, setTask }: Props) {
       />
 
       <TouchableOpacity style={styles.button} onPress={onAdd}>
-        <Text style={styles.buttonText}>+</Text>
+        <Image source={require("../../../assets/plus.png")} />
       </TouchableOpacity>
     </View>
   );

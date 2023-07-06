@@ -1,6 +1,4 @@
 import { View, TouchableOpacity, Text, Image } from 'react-native';
-import trashIcon from "../../../assets/trashIcon.png";
-import circleIcon from "../../../assets/circleIcon.png";
 import { styles } from "./style";
 
 type Props = {
@@ -13,13 +11,13 @@ export function TaskToDo({ task, onComplete, onDelete }: Props) {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={onComplete}>
-        <Image source={circleIcon} />
+        <Image source={require("../../../assets/circleIcon.png")} />
       </TouchableOpacity>
 
       <Text style={styles.text}>{task}</Text>
 
       <TouchableOpacity style={styles.button} onPress={onDelete}>
-        <Image source={trashIcon} />
+        <Image source={require("../../../assets/trashIcon.png")} />
       </TouchableOpacity>
     </View>
   );
