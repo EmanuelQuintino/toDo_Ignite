@@ -1,4 +1,5 @@
 # toDo_Ignite
+![layout](./assets/layout.png)
 
 ## Technologies
 - `React Native`
