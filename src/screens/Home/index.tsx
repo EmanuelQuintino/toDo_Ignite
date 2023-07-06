@@ -50,8 +50,14 @@ export function Home() {
     setTasks(newArrayCompleteTask);
   };
 
+  const countCompleteTasks = () => {
+    const arrayCompletedTasks = tasks.filter(task => task.isCompleted);
+    setTotalComplatedToDos(arrayCompletedTasks.length);
+  };
+
   useEffect(() => {
     setTotalCreatedToDos(tasks.length);
+    countCompleteTasks();
   }, [tasks]);
 
   return (
